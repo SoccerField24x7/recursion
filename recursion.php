@@ -7,18 +7,17 @@ $func = function($str, $pos) use (&$func, &$answer) {
     if(strlen($str) === 0) {
 
         return 1;
-    } else {
-
-        $answer .= substr($str, $pos - 1, 1);
-        return $func(substr($str, 0, strlen($str) - 1), strlen($str) - 1);
-
     }
+
+    $answer .= substr($str, $pos - 1, 1);
+
+    return $func(substr($str, 0, strlen($str) - 1), strlen($str) - 1);
 
 };
 
 $func($str, strlen($str));
 
-print "<p>" . $answer;
+print $answer . "<p>";
 
 
 $arry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -37,7 +36,9 @@ function which($array, &$idx) {
         echo "buzz<br />";
     }
 
-    which($array, $idx--);
+    $idx--;
+    which($array, $idx);
 }
 
-which($arry, count($arry)-1);
+$count = count($arry) - 1;
+which($arry, $count);
